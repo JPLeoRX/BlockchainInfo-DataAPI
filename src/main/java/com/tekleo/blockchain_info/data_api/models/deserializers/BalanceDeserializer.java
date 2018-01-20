@@ -10,6 +10,12 @@ import com.tekleo.blockchain_info.data_api.models.BalanceSummary;
 import java.lang.reflect.Type;
 import java.util.Map;
 
+/**
+ * Deserializer for {@link Balance}
+ *
+ * @since 21.01.2018
+ * @author Leo Ertuna
+ */
 public class BalanceDeserializer implements JsonDeserializer<Balance> {
     @Override
     public Balance deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

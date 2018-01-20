@@ -1,5 +1,7 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-public class Blocks {
-    private BlockSummary[] blocks;
+import java.util.ArrayList;
+
+public class Blocks extends ArrayList<BlockSummary> {
+
 }
