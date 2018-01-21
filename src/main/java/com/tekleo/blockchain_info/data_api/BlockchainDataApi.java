@@ -5,27 +5,27 @@ import com.tekleo.blockchain_info.data_api.models.*;
 import java.util.List;
 
 public interface BlockchainDataApi {
-    Block getSingleBlock(String blockHash);
+    public abstract Block getSingleBlock(String blockHash);
 
-    Transaction getSingleTransactions(String transactionHash);
+    public abstract Transaction getSingleTransaction(String transactionHash);
 
-    ChartData geChartData(String chartType);
+    public abstract ChartData getChartData(String chartType);
 
-    BlockHeight getBlockHeight(String blockHeight);
+    public abstract BlockHeight getBlockHeight(String blockHeight);
 
-    Address getSingleAddress(String address, int limit, int offset);
+    public abstract Address getSingleAddress(String address, int limit, int offset);
 
-    AddressMultiple getMultiAddress(List<String> addresses, int n, int offset);
+    public abstract AddressMultiple getMultiAddress(List<String> addresses, int n, int offset);
 
-    OutputsUnspent getUnspentOutputs(List<String> addresses, int limit, int confirmations);
+    public abstract OutputsUnspent getUnspentOutputs(List<String> addresses, int limit, int confirmations);
 
-    Balance getBalance(List<String> addresses);
+    public abstract Balance getBalance(List<String> addresses);
 
-    BlockLatest getLatestBlock();
+    public abstract BlockLatest getLatestBlock();
 
-    TransactionsUnconfirmed getUnconfirmedTransactions();
+    public abstract TransactionsUnconfirmed getUnconfirmedTransactions();
 
-    Blocks getBlocksForTime(String timeInMilliSeconds);
+    public abstract Blocks getBlocksForTime(String timeInMilliSeconds);
 
-    Blocks getBlocksForPool(String poolName);
+    public abstract Blocks getBlocksForPool(String poolName);
 }
