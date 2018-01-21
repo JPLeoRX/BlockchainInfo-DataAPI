@@ -26,6 +26,7 @@ public class BlockDeserializer implements JsonDeserializer<Block> {
         String mrkl_root = rootObject.get("mrkl_root").getAsString();
         long time = rootObject.get("time").getAsLong();
         long bits = rootObject.get("bits").getAsLong();
+        long fee = rootObject.get("fee").getAsLong();
         long nonce = rootObject.get("nonce").getAsLong();
         long n_tx = rootObject.get("n_tx").getAsLong();
         long size = rootObject.get("size").getAsLong();
@@ -41,6 +42,6 @@ public class BlockDeserializer implements JsonDeserializer<Block> {
             txs.add(jsonDeserializationContext.deserialize(e, Transaction.class));
 
         // Return resulting object
-        return new Block(hash, ver, prev_block, mrkl_root, time, bits, nonce, n_tx, size, block_index, main_chain, height, received_time, relayed_by, txs);
+        return new Block(hash, ver, prev_block, mrkl_root, time, bits, fee, nonce, n_tx, size, block_index, main_chain, height, received_time, relayed_by, txs);
     }
 }

@@ -1,15 +1,26 @@
 package com.tekleo.blockchain_info.data_api.models;
 
 public class OutputPrevious {
-    private String hash;
+    private boolean spent;
+    private long type;
+    private String addr;
     private String value;
     private String tx_index;
     private String n;
+    private String script;
 
     // Getters
     //------------------------------------------------------------------------------------------------------------------
-    public String getHash() {
-        return hash;
+    public boolean isSpent() {
+        return spent;
+    }
+
+    public long getType() {
+        return type;
+    }
+
+    public String getAddress() {
+        return addr;
     }
 
     public String getValue() {
@@ -23,6 +34,10 @@ public class OutputPrevious {
     public String getN() {
         return n;
     }
+
+    public String getScript() {
+        return script;
+    }
     //------------------------------------------------------------------------------------------------------------------
 
 
@@ -32,10 +47,13 @@ public class OutputPrevious {
     @Override
     public String toString() {
         return "OutputPrevious{" +
-                "hash='" + hash + '\'' +
+                "spent=" + spent +
+                ", type=" + type +
+                ", addr='" + addr + '\'' +
                 ", value='" + value + '\'' +
                 ", tx_index='" + tx_index + '\'' +
                 ", n='" + n + '\'' +
+                ", script='" + script + '\'' +
                 '}';
     }
     //------------------------------------------------------------------------------------------------------------------

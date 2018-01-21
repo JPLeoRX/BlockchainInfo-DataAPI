@@ -9,6 +9,7 @@ public class Block {
     private String mrkl_root;
     private long time;
     private long bits;
+    private long fee;
     private long nonce;
     private long n_tx;
     private long size;
@@ -21,13 +22,14 @@ public class Block {
 
     // Constructors
     //------------------------------------------------------------------------------------------------------------------
-    public Block(String hash, long ver, String prev_block, String mrkl_root, long time, long bits, long nonce, long n_tx, long size, long block_index, boolean main_chain, long height, long received_time, String relayed_by, ArrayList<Transaction> tx) {
+    public Block(String hash, long ver, String prev_block, String mrkl_root, long time, long bits, long fee, long nonce, long n_tx, long size, long block_index, boolean main_chain, long height, long received_time, String relayed_by, ArrayList<Transaction> tx) {
         this.hash = hash;
         this.ver = ver;
         this.prev_block = prev_block;
         this.mrkl_root = mrkl_root;
         this.time = time;
         this.bits = bits;
+        this.fee = fee;
         this.nonce = nonce;
         this.n_tx = n_tx;
         this.size = size;
@@ -66,6 +68,10 @@ public class Block {
 
     public long getBits() {
         return bits;
+    }
+
+    public long getFee() {
+        return fee;
     }
 
     public long getNonce() {
@@ -118,6 +124,7 @@ public class Block {
                 ", mrkl_root='" + mrkl_root + '\'' +
                 ", time=" + time +
                 ", bits=" + bits +
+                ", fee=" + fee +
                 ", nonce=" + nonce +
                 ", n_tx=" + n_tx +
                 ", size=" + size +

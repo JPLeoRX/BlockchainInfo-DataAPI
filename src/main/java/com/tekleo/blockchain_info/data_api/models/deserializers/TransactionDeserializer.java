@@ -28,7 +28,6 @@ public class TransactionDeserializer implements JsonDeserializer<Transaction> {
         String lock_time = rootObject.get("lock_time").getAsString();
         long size = rootObject.get("size").getAsLong();
         String relayed_by = rootObject.get("relayed_by").getAsString();
-        long block_height = rootObject.get("block_height").getAsLong();
         String tx_index = rootObject.get("tx_index").getAsString();
 
         // Read array of inputs
@@ -42,6 +41,6 @@ public class TransactionDeserializer implements JsonDeserializer<Transaction> {
             out.add(jsonDeserializationContext.deserialize(e, Output.class));
 
         // Return resulting object
-        return new Transaction(hash, ver, vin_sz, vout_sz, lock_time, size, relayed_by, block_height, tx_index, inputs, out);
+        return new Transaction(hash, ver, vin_sz, vout_sz, lock_time, size, relayed_by, tx_index, inputs, out);
     }
 }
