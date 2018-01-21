@@ -1,18 +1,38 @@
 package com.tekleo.blockchain_info.data_api.models;
 
 public class Output {
-    private String value;
-    private String hash;
+    private boolean spent;
+    private long tx_index;
+    private long type;
+    private String addr;
+    private long value;
+    private long n;
     private String script;
 
     // Getters
     //------------------------------------------------------------------------------------------------------------------
-    public String getValue() {
+    public boolean isSpent() {
+        return spent;
+    }
+
+    public long getTransactionIndex() {
+        return tx_index;
+    }
+
+    public long getType() {
+        return type;
+    }
+
+    public String getAddress() {
+        return addr;
+    }
+
+    public long getValue() {
         return value;
     }
 
-    public String getHash() {
-        return hash;
+    public long getN() {
+        return n;
     }
 
     public String getScript() {
@@ -27,8 +47,12 @@ public class Output {
     @Override
     public String toString() {
         return "Output{" +
-                "value='" + value + '\'' +
-                ", hash='" + hash + '\'' +
+                "spent=" + spent +
+                ", tx_index=" + tx_index +
+                ", type=" + type +
+                ", addr='" + addr + '\'' +
+                ", value=" + value +
+                ", n=" + n +
                 ", script='" + script + '\'' +
                 '}';
     }

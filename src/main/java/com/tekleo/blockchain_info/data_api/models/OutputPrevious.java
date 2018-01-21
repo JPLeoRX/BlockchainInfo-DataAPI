@@ -4,9 +4,9 @@ public class OutputPrevious {
     private boolean spent;
     private long type;
     private String addr;
-    private String value;
-    private String tx_index;
-    private String n;
+    private long value;
+    private long tx_index;
+    private long n;
     private String script;
 
     // Getters
@@ -23,15 +23,15 @@ public class OutputPrevious {
         return addr;
     }
 
-    public String getValue() {
+    public long getValue() {
         return value;
     }
 
-    public String getTransactionIndex() {
+    public long getTransactionIndex() {
         return tx_index;
     }
 
-    public String getN() {
+    public long getN() {
         return n;
     }
 

@@ -13,6 +13,7 @@ public class GetSingleBlockTest {
     public void test() {
         // Create request
         Request request = new GetSingleBlock("0000000000000000005ffe9e925f190b64efd6186007e1fb5d90544185bc5d25");
+        System.out.println(request.getUrl());
 
         // Get response as JSON
         String json = request.send();
@@ -20,6 +21,7 @@ public class GetSingleBlockTest {
         // Form the Model object
         Block block = Parser.fromJson(json, Block.class);
 
+        // Test basic data fields
         assertEquals("0000000000000000005ffe9e925f190b64efd6186007e1fb5d90544185bc5d25", block.getHash());
         assertEquals(536870912, block.getVersion());
         assertEquals("0000000000000000004ab6ac897ea3f293b07a67346e481909907beeed87479d", block.getPreviousBlock());
@@ -36,12 +38,11 @@ public class GetSingleBlockTest {
         assertEquals(1516494272, block.getReceivedTime());
         assertEquals("0.0.0.0", block.getRelayedBy());
 
-        // Transactions test
+        // Test transactions
         assertEquals(block.getNumberOfTransactions(), block.getTransactions().size());
         for (Transaction transaction : block.getTransactions()) {
             assertEquals(transaction.getVolumeInputSize(), transaction.getInputs().size());
             assertEquals(transaction.getVolumeOutputSize(), transaction.getOutputs().size());
         }
     }
-
 }

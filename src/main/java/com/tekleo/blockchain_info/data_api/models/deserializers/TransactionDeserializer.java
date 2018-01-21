@@ -23,12 +23,16 @@ public class TransactionDeserializer implements JsonDeserializer<Transaction> {
         // Read all basic data
         String hash = rootObject.get("hash").getAsString();
         long ver = rootObject.get("ver").getAsLong();
+        long weight = rootObject.get("weight").getAsLong();
+        long block_height =  rootObject.get("block_height") == null ? -1 : rootObject.get("block_height").getAsLong();
+        String relayed_by = rootObject.get("relayed_by").getAsString();
+        long lock_time = rootObject.get("lock_time").getAsLong();
+        long size = rootObject.get("size").getAsLong();
+        boolean double_spend = rootObject.get("double_spend") == null ? false : rootObject.get("double_spend").getAsBoolean();
+        long time = rootObject.get("time").getAsLong();
+        long tx_index = rootObject.get("tx_index").getAsLong();
         long vin_sz = rootObject.get("vin_sz").getAsLong();
         long vout_sz = rootObject.get("vout_sz").getAsLong();
-        String lock_time = rootObject.get("lock_time").getAsString();
-        long size = rootObject.get("size").getAsLong();
-        String relayed_by = rootObject.get("relayed_by").getAsString();
-        String tx_index = rootObject.get("tx_index").getAsString();
 
         // Read array of inputs
         ArrayList<Input> inputs = new ArrayList<>();
@@ -41,6 +45,10 @@ public class TransactionDeserializer implements JsonDeserializer<Transaction> {
             out.add(jsonDeserializationContext.deserialize(e, Output.class));
 
         // Return resulting object
-        return new Transaction(hash, ver, vin_sz, vout_sz, lock_time, size, relayed_by, tx_index, inputs, out);
+        return new Transaction(
+                hash, ver, weight, block_height,
+                relayed_by, lock_time, size, double_spend,
+                time, tx_index, vin_sz, vout_sz, inputs, out
+        );
     }
 }
