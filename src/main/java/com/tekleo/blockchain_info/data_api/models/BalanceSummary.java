@@ -1,6 +1,16 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-public class BalanceSummary {
+import com.tekleo.blockchain_info.data_api.Model;
+
+/**
+ * Balance summary
+ *
+ * Used in {@link Balance} model
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class BalanceSummary implements Model {
     private long final_balance;
     private long n_tx;
     private long total_received;

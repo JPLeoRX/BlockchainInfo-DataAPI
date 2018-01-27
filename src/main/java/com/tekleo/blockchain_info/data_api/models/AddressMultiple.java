@@ -1,8 +1,19 @@
 package com.tekleo.blockchain_info.data_api.models;
 
+import com.tekleo.blockchain_info.data_api.Model;
+import com.tekleo.blockchain_info.data_api.requests.GetMultiAddress;
+
 import java.util.ArrayList;
 
-public class AddressMultiple {
+/**
+ * Multiple addresses
+ *
+ * Used in {@link GetMultiAddress} request
+ *
+ * @author Leo Ertuna
+ * @since 21.01.2018 01:18
+ */
+public class AddressMultiple implements Model {
     private ArrayList<AddressSummary> addresses;
     private ArrayList<Transaction> txs;
 

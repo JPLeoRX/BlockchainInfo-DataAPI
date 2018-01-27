@@ -1,8 +1,19 @@
 package com.tekleo.blockchain_info.data_api.models;
 
+import com.tekleo.blockchain_info.data_api.Model;
+import com.tekleo.blockchain_info.data_api.requests.GetSingleBlock;
+
 import java.util.ArrayList;
 
-public class Block {
+/**
+ * Block
+ *
+ * Used in {@link GetSingleBlock} model
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class Block implements Model {
     private String hash;
     private long ver;
     private String prev_block;

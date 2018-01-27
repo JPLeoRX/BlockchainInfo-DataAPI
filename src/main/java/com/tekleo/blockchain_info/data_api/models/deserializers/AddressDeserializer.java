@@ -23,7 +23,6 @@ public class AddressDeserializer implements JsonDeserializer<Address> {
         String hash160 = rootObject.get("hash160").getAsString();
         String address = rootObject.get("address").getAsString();
         long n_tx = rootObject.get("n_tx").getAsLong();
-        long n_unredeemed = rootObject.get("n_unredeemed").getAsLong();
         long total_received = rootObject.get("total_received").getAsLong();
         long total_sent = rootObject.get("total_sent").getAsLong();
         long final_balance = rootObject.get("final_balance").getAsLong();
@@ -34,6 +33,6 @@ public class AddressDeserializer implements JsonDeserializer<Address> {
             transactions.add(jsonDeserializationContext.deserialize(e, Transaction.class));
 
         // Return resulting object
-        return new Address(hash160, address, n_tx, n_unredeemed, total_received, total_sent, final_balance, transactions);
+        return new Address(hash160, address, n_tx, total_received, total_sent, final_balance, transactions);
     }
 }

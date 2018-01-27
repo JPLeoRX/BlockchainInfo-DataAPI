@@ -26,6 +26,7 @@ public class Parser {
         gsonBuilder.registerTypeAdapter(ChartData.class, new ChartDataDeserializer());
         gsonBuilder.registerTypeAdapter(OutputsUnspent.class, new OutputsUnspentDeserializer());
         gsonBuilder.registerTypeAdapter(Transaction.class, new TransactionDeserializer());
+        gsonBuilder.registerTypeAdapter(TransactionsUnconfirmed.class, new TransactionsUnconfirmedDeserializer());
     }
 
     // Create Gson from GsonBuilder

@@ -23,7 +23,7 @@ public class AddressTest {
         assertEquals("660d4ef3a743e3e696ad990364e555c271ad504b", address.getHash160());
         assertEquals("1AJbsFZ64EpEfS5UAjAfcUG8pH8Jn3rn1F", address.getAddress());
         assertEquals(17, address.getNumberOfTransactions());
-        assertEquals(2, address.getNumberOfUnredeemed());
+        //assertEquals(2, address.getNumberOfUnredeemed());
         assertEquals(1031350000, address.getTotalReceived());
         assertEquals(931250000, address.getTotalSent());
         assertEquals(100100000, address.getFinalBalance());

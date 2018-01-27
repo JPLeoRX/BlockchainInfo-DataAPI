@@ -1,12 +1,22 @@
 package com.tekleo.blockchain_info.data_api.models;
 
+import com.tekleo.blockchain_info.data_api.Model;
+import com.tekleo.blockchain_info.data_api.requests.GetSingleAddress;
+
 import java.util.ArrayList;
 
-public class Address {
+/**
+ * Address
+ *
+ * Used in {@link GetSingleAddress} request
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class Address implements Model {
     private String hash160;
     private String address;
     private long n_tx;
-    private long n_unredeemed;
     private long total_received;
     private long total_sent;
     private long final_balance;
@@ -14,11 +24,10 @@ public class Address {
 
     // Constructors
     //------------------------------------------------------------------------------------------------------------------
-    public Address(String hash160, String address, long n_tx, long n_unredeemed, long total_received, long total_sent, long final_balance, ArrayList<Transaction> txs) {
+    public Address(String hash160, String address, long n_tx, long total_received, long total_sent, long final_balance, ArrayList<Transaction> txs) {
         this.hash160 = hash160;
         this.address = address;
         this.n_tx = n_tx;
-        this.n_unredeemed = n_unredeemed;
         this.total_received = total_received;
         this.total_sent = total_sent;
         this.final_balance = final_balance;
@@ -40,10 +49,6 @@ public class Address {
 
     public long getNumberOfTransactions() {
         return n_tx;
-    }
-
-    public long getNumberOfUnredeemed() {
-        return n_unredeemed;
     }
 
     public long getTotalReceived() {
@@ -73,7 +78,6 @@ public class Address {
                 "hash160='" + hash160 + '\'' +
                 ", address='" + address + '\'' +
                 ", n_tx=" + n_tx +
-                ", n_unredeemed=" + n_unredeemed +
                 ", total_received=" + total_received +
                 ", total_sent=" + total_sent +
                 ", final_balance=" + final_balance +

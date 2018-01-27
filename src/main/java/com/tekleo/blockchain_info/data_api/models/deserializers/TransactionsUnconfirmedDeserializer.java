@@ -1,9 +1,6 @@
 package com.tekleo.blockchain_info.data_api.models.deserializers;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import com.tekleo.blockchain_info.data_api.models.Transaction;
 import com.tekleo.blockchain_info.data_api.models.TransactionsUnconfirmed;
 
@@ -18,9 +15,13 @@ import java.lang.reflect.Type;
 public class TransactionsUnconfirmedDeserializer implements JsonDeserializer<TransactionsUnconfirmed> {
     @Override
     public TransactionsUnconfirmed deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        TransactionsUnconfirmed txs = new TransactionsUnconfirmed();
-        for (JsonElement e : jsonElement.getAsJsonObject().get("txs").getAsJsonArray())
-            txs.add(jsonDeserializationContext.deserialize(e, Transaction.class));
-        return txs;
+        // Store root object
+        JsonObject rootObject = jsonElement.getAsJsonObject();
+
+        // Read array of transactions
+        TransactionsUnconfirmed transactions = new TransactionsUnconfirmed();
+        for (JsonElement e : rootObject.get("txs").getAsJsonArray())
+            transactions.add(jsonDeserializationContext.deserialize(e, Transaction.class));
+        return transactions;
     }
 }

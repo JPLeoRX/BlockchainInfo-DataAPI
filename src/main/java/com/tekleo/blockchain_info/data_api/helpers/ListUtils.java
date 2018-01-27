@@ -9,4 +9,11 @@ public class ListUtils {
         arrayList.add(value);
         return arrayList;
     }
+
+    public static <E> List<E> toList(E[] valuesArray) {
+        ArrayList<E> arrayList = new ArrayList<>();
+        for (E value : valuesArray)
+            arrayList.add(value);
+        return arrayList;
+    }
 }
