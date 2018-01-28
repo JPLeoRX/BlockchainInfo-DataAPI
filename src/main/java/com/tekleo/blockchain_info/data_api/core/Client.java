@@ -1,6 +1,5 @@
 package com.tekleo.blockchain_info.data_api.core;
 
-import com.tekleo.blockchain_info.data_api.core.Request;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
@@ -10,7 +9,6 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 
@@ -50,11 +48,11 @@ public class Client {
     }
 
     private void createPostRequest() {
-        throw new NotImplementedException();
+        throw new RuntimeException("Not implemented");
     }
 
     private void createPutRequest() {
-        throw new NotImplementedException();
+        throw new RuntimeException("Not implemented");
     }
 
     private void createRequest() {

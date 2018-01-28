@@ -36,7 +36,7 @@ public interface Request {
     public abstract List<String> getArguments();
 
     /**
-     * @return parameters of this request like "a=1&b=2" in REST request to "www.example.com/api/ask?a=1&b=2"
+     * @return parameters of this request like "a=1" in REST request to "www.example.com/api/ask?a=1"
      */
     public abstract Map<String, String> getParameters();
 

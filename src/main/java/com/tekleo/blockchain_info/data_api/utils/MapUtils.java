@@ -14,6 +14,8 @@ public class MapUtils {
      * Create a map from just one key-value pair
      * @param key key
      * @param value value
+     * @param <K> type of the key
+     * @param <V> type of the value
      * @return new map
      */
     public static <K, V> Map<K, V> fromOne(K key, V value) {
@@ -33,7 +35,9 @@ public class MapUtils {
      * @param value1 1st value
      * @param key2 2nd key
      * @param value2 2nd value
-     * @return
+     * @param <K> type of the key
+     * @param <V> type of the value
+     * @return new map
      */
     public static <K, V> Map<K, V> fromTwo(K key1, V value1, K key2, V value2) {
         // Create new map
@@ -53,6 +57,8 @@ public class MapUtils {
     /**
      * Convert both key and value objects to strings
      * @param map existing map
+     * @param <K> type of the key
+     * @param <V> type of the value
      * @return map of strings
      */
     public static <K, V> Map<String, String> toString(Map<K, V> map) {

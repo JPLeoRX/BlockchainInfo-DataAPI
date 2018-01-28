@@ -4,17 +4,52 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tekleo.blockchain-info</groupId>
-    <artifactId>data-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <!-- Project's Identifier -->
+    <groupId>com.tekleo</groupId>
+    <artifactId>blockchain-info-data-api</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <!-- Project's Description -->
+    <name>Blockchain Info - Data API</name>
+    <description>Java client for Blockchain.Info Data API</description>
+    <url>https://github.com/JPLeoRX/BlockchainInfo-DataAPI</url>
+
+    <!-- Project's License -->
+    <licenses>
+        <license></license>
+    </licenses>
+
+    <!-- Project's Developers -->
+    <developers>
+        <developer>
+            <name>Leo Ertuna</name>
+            <email>leo.ertuna@gmail.com</email>
+            <url>https://github.com/JPLeoRX</url>
+        </developer>
+    </developers>
+
+    <!-- Project's SCM - GitHub -->
+    <scm>
+        <connection>scm:git:git://github.com/JPLeoRX/BlockchainInfo-DataAPI.git</connection>
+        <developerConnection>scm:git:ssh://github.com:JPLeoRX/BlockchainInfo-DataAPI.git</developerConnection>
+        <url>http://github.com/JPLeoRX/BlockchainInfo-DataAPI/tree/master</url>
+    </scm>
 
     <properties>
+        <!-- Core parts -->
         <java.version>1.8</java.version>
-
-        <apache-httpclient.version>4.5.4</apache-httpclient.version>
-        <gson.version>2.8.2</gson.version>
         <junit.version>4.12</junit.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-gpg-plugin>1.6</maven-gpg-plugin>
+        <maven-scm-plugin>1.9.5</maven-scm-plugin>
+
+        <!-- Dependencies -->
+        <apache-httpclient.version>4.5.4</apache-httpclient.version>
+        <gson.version>2.8.2</gson.version>
     </properties>
 
     <dependencies>
@@ -55,7 +90,66 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <!-- Maven Source -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven JavaDoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Deploy -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+
+            <!-- Maven GPG Signed -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin}</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven SCM -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>${maven-scm-plugin}</version>
+            </plugin>
         </plugins>
     </build>
-
 </project>

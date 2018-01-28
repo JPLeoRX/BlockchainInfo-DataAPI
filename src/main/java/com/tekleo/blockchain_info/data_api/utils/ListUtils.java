@@ -13,6 +13,7 @@ public class ListUtils {
     /**
      * Create a list from just one element
      * @param element element of the list
+     * @param <E> type of the element
      * @return list
      */
     public static <E> List<E> fromOne(E element) {
@@ -24,6 +25,7 @@ public class ListUtils {
     /**
      * Convert array of objects to a list
      * @param elements elements of the list
+     * @param <E> type of the element
      * @return list
      */
     public static <E> List<E> toList(E[] elements) {
