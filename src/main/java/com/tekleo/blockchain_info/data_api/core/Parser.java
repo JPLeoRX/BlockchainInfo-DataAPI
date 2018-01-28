@@ -1,4 +1,4 @@
-package com.tekleo.blockchain_info.data_api.utils;
+package com.tekleo.blockchain_info.data_api.core;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
@@ -15,7 +15,10 @@ public class Parser {
 
     // Setting up custom deserializers here
     static {
+        // Create new GsonBuilder
         gsonBuilder = new GsonBuilder();
+
+        // Register all the deserializers
         gsonBuilder.registerTypeAdapter(Address.class, new AddressDeserializer());
         gsonBuilder.registerTypeAdapter(AddressMultiple.class, new AddressMultipleDeserializer());
         gsonBuilder.registerTypeAdapter(Balance.class, new BalanceDeserializer());
@@ -27,10 +30,8 @@ public class Parser {
         gsonBuilder.registerTypeAdapter(OutputsUnspent.class, new OutputsUnspentDeserializer());
         gsonBuilder.registerTypeAdapter(Transaction.class, new TransactionDeserializer());
         gsonBuilder.registerTypeAdapter(TransactionsUnconfirmed.class, new TransactionsUnconfirmedDeserializer());
-    }
 
-    // Create Gson from GsonBuilder
-    static {
+        // Create Gson from GsonBuilder
         gson = gsonBuilder.create();
     }
 

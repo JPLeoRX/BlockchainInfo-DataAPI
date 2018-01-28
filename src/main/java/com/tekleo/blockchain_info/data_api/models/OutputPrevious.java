@@ -1,6 +1,21 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-public class OutputPrevious {
+import com.tekleo.blockchain_info.data_api.core.Immutable;
+import com.tekleo.blockchain_info.data_api.core.Model;
+
+import java.io.Serializable;
+
+/**
+ * Previous output
+ *
+ * Used in {@link Input} model
+ *
+ * Deserialized automatically
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class OutputPrevious implements Model, Immutable, Serializable, Cloneable {
     private boolean spent;
     private long type;
     private String addr;
@@ -8,6 +23,21 @@ public class OutputPrevious {
     private long tx_index;
     private long n;
     private String script;
+
+    // Constructors
+    //------------------------------------------------------------------------------------------------------------------
+    private OutputPrevious(boolean spent, long type, String addr, long value, long tx_index, long n, String script) {
+        this.spent = spent;
+        this.type = type;
+        this.addr = addr;
+        this.value = value;
+        this.tx_index = tx_index;
+        this.n = n;
+        this.script = script;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+
+
 
     // Getters
     //------------------------------------------------------------------------------------------------------------------
@@ -55,6 +85,11 @@ public class OutputPrevious {
                 ", n='" + n + '\'' +
                 ", script='" + script + '\'' +
                 '}';
+    }
+
+    @Override
+    public OutputPrevious clone() {
+        return new OutputPrevious(spent, type, addr, value, tx_index, n, script);
     }
     //------------------------------------------------------------------------------------------------------------------
 }

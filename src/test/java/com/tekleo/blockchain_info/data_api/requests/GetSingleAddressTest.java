@@ -1,12 +1,14 @@
 package com.tekleo.blockchain_info.data_api.requests;
 
-import com.tekleo.blockchain_info.data_api.Request;
+import com.tekleo.blockchain_info.data_api.core.Request;
 import com.tekleo.blockchain_info.data_api.models.Address;
-import com.tekleo.blockchain_info.data_api.utils.Parser;
+import com.tekleo.blockchain_info.data_api.core.Parser;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+@Ignore // skip this as the address is still active and its contents keep changing
 public class GetSingleAddressTest {
     @Test
     public void test() {

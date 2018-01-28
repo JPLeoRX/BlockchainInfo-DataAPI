@@ -1,9 +1,7 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-import com.tekleo.blockchain_info.data_api.utils.Parser;
+import com.tekleo.blockchain_info.data_api.core.Parser;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class ChartDataTest {
     @Test

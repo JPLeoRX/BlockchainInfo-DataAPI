@@ -1,8 +1,25 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-import java.util.ArrayList;
+import com.tekleo.blockchain_info.data_api.core.Immutable;
+import com.tekleo.blockchain_info.data_api.core.Model;
+import com.tekleo.blockchain_info.data_api.models.deserializers.TransactionDeserializer;
+import com.tekleo.blockchain_info.data_api.requests.GetSingleTransaction;
 
-public class Transaction {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ * Transaction
+ *
+ * Used in {@link GetSingleTransaction} request
+ *
+ * Deserialized by {@link TransactionDeserializer}
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class Transaction implements Model, Immutable, Serializable, Cloneable {
     private String hash;
     private long ver;
     private long weight;
@@ -108,6 +125,19 @@ public class Transaction {
     // Others
     //------------------------------------------------------------------------------------------------------------------
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return Objects.equals(hash, that.hash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hash);
+    }
+
+    @Override
     public String toString() {
         return "Transaction{" +
                 "hash='" + hash + '\'' +
@@ -125,6 +155,11 @@ public class Transaction {
                 ", inputs=" + inputs +
                 ", out=" + out +
                 '}';
+    }
+
+    @Override
+    public Transaction clone() {
+        return new Transaction(hash, ver, weight, block_height, relayed_by, lock_time, size, double_spend, time, tx_index, vin_sz, vout_sz, inputs, out);
     }
     //------------------------------------------------------------------------------------------------------------------
 }

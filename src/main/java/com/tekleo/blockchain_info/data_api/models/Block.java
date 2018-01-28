@@ -1,19 +1,25 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-import com.tekleo.blockchain_info.data_api.Model;
+import com.tekleo.blockchain_info.data_api.core.Immutable;
+import com.tekleo.blockchain_info.data_api.core.Model;
+import com.tekleo.blockchain_info.data_api.models.deserializers.BlockDeserializer;
 import com.tekleo.blockchain_info.data_api.requests.GetSingleBlock;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Block
  *
- * Used in {@link GetSingleBlock} model
+ * Used in {@link GetSingleBlock} request
+ *
+ * Deserialized by {@link BlockDeserializer}
  *
  * @author Leo Ertuna
  * @since 20.01.2018 02:51
  */
-public class Block implements Model {
+public class Block implements Model, Immutable, Serializable, Cloneable {
     private String hash;
     private long ver;
     private String prev_block;
@@ -127,6 +133,19 @@ public class Block implements Model {
     // Others
     //------------------------------------------------------------------------------------------------------------------
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Block block = (Block) o;
+        return Objects.equals(hash, block.hash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hash);
+    }
+
+    @Override
     public String toString() {
         return "Block{" +
                 "hash='" + hash + '\'' +
@@ -146,6 +165,11 @@ public class Block implements Model {
                 ", relayed_by='" + relayed_by + '\'' +
                 ", tx=" + tx +
                 '}';
+    }
+
+    @Override
+    public Block clone() {
+        return new Block(hash, ver, prev_block, mrkl_root, time, bits, fee, nonce, n_tx, size, block_index, main_chain, height, received_time, relayed_by, tx);
     }
     //------------------------------------------------------------------------------------------------------------------
 }

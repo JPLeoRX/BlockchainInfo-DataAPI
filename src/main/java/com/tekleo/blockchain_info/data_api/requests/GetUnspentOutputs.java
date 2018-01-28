@@ -1,13 +1,14 @@
 package com.tekleo.blockchain_info.data_api.requests;
 
-import com.tekleo.blockchain_info.data_api.helpers.ListUtils;
-import com.tekleo.blockchain_info.data_api.helpers.MapUtils;
-import com.tekleo.blockchain_info.data_api.helpers.StringUtils;
+import com.tekleo.blockchain_info.data_api.core.GetRequest;
+import com.tekleo.blockchain_info.data_api.utils.ListUtils;
+import com.tekleo.blockchain_info.data_api.utils.MapUtils;
+import com.tekleo.blockchain_info.data_api.utils.StringUtils;
 
 import java.util.List;
 import java.util.Map;
 
-public class GetUnspentOutputs extends Get {
+public class GetUnspentOutputs extends GetRequest {
     private List<String> addresses;
     private Integer limit;                      // Optional limit parameter to show n transactions e.g. &limit=50 (Default: 250, Max: 1000)
     private Integer confirmations;              // Optional confirmations parameter to limit the minimum confirmations e.g. &confirmations=6
@@ -40,7 +41,7 @@ public class GetUnspentOutputs extends Get {
 
     @Override
     public Map<String, String> getParameters() {
-        Map<String, String> map = MapUtils.fromTwo("limit", limit, "confirmations", confirmations);
+        Map<String, String> map = MapUtils.toString(MapUtils.fromTwo("limit", limit, "confirmations", confirmations));
         map.put("active", StringUtils.join(addresses, "%7C"));
         return map;
     }

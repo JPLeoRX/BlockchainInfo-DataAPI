@@ -1,12 +1,13 @@
 package com.tekleo.blockchain_info.data_api.requests;
 
-import com.tekleo.blockchain_info.data_api.helpers.ListUtils;
-import com.tekleo.blockchain_info.data_api.helpers.MapUtils;
+import com.tekleo.blockchain_info.data_api.core.GetRequest;
+import com.tekleo.blockchain_info.data_api.utils.ListUtils;
+import com.tekleo.blockchain_info.data_api.utils.MapUtils;
 
 import java.util.List;
 import java.util.Map;
 
-public class GetBlockHeight extends Get {
+public class GetBlockHeight extends GetRequest {
     private long blockHeight;
 
     public GetBlockHeight(long blockHeight) {

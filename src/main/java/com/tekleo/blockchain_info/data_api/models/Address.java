@@ -1,19 +1,25 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-import com.tekleo.blockchain_info.data_api.Model;
+import com.tekleo.blockchain_info.data_api.core.Immutable;
+import com.tekleo.blockchain_info.data_api.core.Model;
+import com.tekleo.blockchain_info.data_api.models.deserializers.AddressDeserializer;
 import com.tekleo.blockchain_info.data_api.requests.GetSingleAddress;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Address
  *
  * Used in {@link GetSingleAddress} request
  *
+ * Deserialized by {@link AddressDeserializer}
+ *
  * @author Leo Ertuna
  * @since 20.01.2018 02:51
  */
-public class Address implements Model {
+public class Address implements Model, Immutable, Serializable, Cloneable {
     private String hash160;
     private String address;
     private long n_tx;
@@ -73,6 +79,19 @@ public class Address implements Model {
     // Others
     //------------------------------------------------------------------------------------------------------------------
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address1 = (Address) o;
+        return Objects.equals(address, address1.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address);
+    }
+
+    @Override
     public String toString() {
         return "Address{" +
                 "hash160='" + hash160 + '\'' +
@@ -83,6 +102,11 @@ public class Address implements Model {
                 ", final_balance=" + final_balance +
                 ", txs=" + txs +
                 '}';
+    }
+
+    @Override
+    public Address clone() {
+        return new Address(hash160, address, n_tx, total_received, total_sent, final_balance, txs);
     }
     //------------------------------------------------------------------------------------------------------------------
 }

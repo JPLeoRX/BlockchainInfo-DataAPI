@@ -1,8 +1,25 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-import java.util.ArrayList;
+import com.tekleo.blockchain_info.data_api.core.Immutable;
+import com.tekleo.blockchain_info.data_api.core.Model;
+import com.tekleo.blockchain_info.data_api.models.deserializers.BlockLatestDeserializer;
+import com.tekleo.blockchain_info.data_api.requests.GetLatestBlock;
 
-public class BlockLatest {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ * Latest Block
+ *
+ * Used in {@link GetLatestBlock} request
+ *
+ * Deserialized by {@link BlockLatestDeserializer}
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class BlockLatest implements Model, Immutable, Serializable, Cloneable {
     private String hash;
     private long time;
     private long block_index;
@@ -50,6 +67,19 @@ public class BlockLatest {
     // Others
     //------------------------------------------------------------------------------------------------------------------
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BlockLatest that = (BlockLatest) o;
+        return Objects.equals(hash, that.hash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hash);
+    }
+
+    @Override
     public String toString() {
         return "BlockLatest{" +
                 "hash='" + hash + '\'' +
@@ -58,6 +88,11 @@ public class BlockLatest {
                 ", height=" + height +
                 ", txIndexes=" + txIndexes +
                 '}';
+    }
+
+    @Override
+    public BlockLatest clone() throws CloneNotSupportedException {
+        return new BlockLatest(hash, time, block_index, height, txIndexes);
     }
     //------------------------------------------------------------------------------------------------------------------
 }

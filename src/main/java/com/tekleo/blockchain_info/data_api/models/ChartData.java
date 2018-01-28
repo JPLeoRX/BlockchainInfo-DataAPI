@@ -1,8 +1,25 @@
 package com.tekleo.blockchain_info.data_api.models;
 
-import java.util.ArrayList;
+import com.tekleo.blockchain_info.data_api.core.Immutable;
+import com.tekleo.blockchain_info.data_api.core.Model;
+import com.tekleo.blockchain_info.data_api.models.deserializers.ChartDataDeserializer;
+import com.tekleo.blockchain_info.data_api.requests.GetChartData;
 
-public class ChartData {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ * Chart data
+ *
+ * Used in {@link GetChartData} request
+ *
+ * Deserialized by {@link ChartDataDeserializer}
+ *
+ * @author Leo Ertuna
+ * @since 20.01.2018 02:51
+ */
+public class ChartData implements Model, Immutable, Serializable, Cloneable {
     private String status;
     private String name;
     private String unit;
@@ -56,6 +73,19 @@ public class ChartData {
     // Others
     //------------------------------------------------------------------------------------------------------------------
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChartData chartData = (ChartData) o;
+        return Objects.equals(name, chartData.name) && Objects.equals(unit, chartData.unit) && Objects.equals(period, chartData.period);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, unit, period);
+    }
+
+    @Override
     public String toString() {
         return "ChartData{" +
                 "status='" + status + '\'' +
@@ -66,6 +96,10 @@ public class ChartData {
                 ", values=" + values +
                 '}';
     }
-    //------------------------------------------------------------------------------------------------------------------
 
+    @Override
+    public ChartData clone() {
+        return new ChartData(status, name, unit, period, description, values);
+    }
+    //------------------------------------------------------------------------------------------------------------------
 }

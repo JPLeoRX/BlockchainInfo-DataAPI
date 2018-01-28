@@ -1,11 +1,12 @@
 package com.tekleo.blockchain_info.data_api.requests;
 
-import com.tekleo.blockchain_info.data_api.helpers.ListUtils;
+import com.tekleo.blockchain_info.data_api.core.GetRequest;
+import com.tekleo.blockchain_info.data_api.utils.ListUtils;
 
 import java.util.List;
 import java.util.Map;
 
-public class GetSingleBlock extends Get {
+public class GetSingleBlock extends GetRequest {
     private String blockHash;
 
     public GetSingleBlock(String blockHash) {

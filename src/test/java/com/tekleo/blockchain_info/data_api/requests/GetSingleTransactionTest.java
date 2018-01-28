@@ -1,11 +1,11 @@
 package com.tekleo.blockchain_info.data_api.requests;
 
-import com.tekleo.blockchain_info.data_api.Request;
+import com.tekleo.blockchain_info.data_api.core.Request;
 import com.tekleo.blockchain_info.data_api.models.Input;
 import com.tekleo.blockchain_info.data_api.models.Output;
 import com.tekleo.blockchain_info.data_api.models.OutputPrevious;
 import com.tekleo.blockchain_info.data_api.models.Transaction;
-import com.tekleo.blockchain_info.data_api.utils.Parser;
+import com.tekleo.blockchain_info.data_api.core.Parser;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

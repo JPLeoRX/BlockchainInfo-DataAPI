@@ -1,13 +1,14 @@
 package com.tekleo.blockchain_info.data_api.requests;
 
-import com.tekleo.blockchain_info.data_api.helpers.ListUtils;
-import com.tekleo.blockchain_info.data_api.helpers.MapUtils;
-import com.tekleo.blockchain_info.data_api.helpers.StringUtils;
+import com.tekleo.blockchain_info.data_api.core.GetRequest;
+import com.tekleo.blockchain_info.data_api.utils.ListUtils;
+import com.tekleo.blockchain_info.data_api.utils.MapUtils;
+import com.tekleo.blockchain_info.data_api.utils.StringUtils;
 
 import java.util.List;
 import java.util.Map;
 
-public class GetBalance extends Get {
+public class GetBalance extends GetRequest {
     private List<String> addresses;
 
     public GetBalance(List<String> addresses) {
